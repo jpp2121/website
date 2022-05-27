@@ -1,0 +1,526 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3rem;
+
+  /*========== Colors ==========*/
+  --hue: 174;
+  --sat: 63%;
+  --first-color: hsl(var(--hue), var(--sat), 40%);
+  --first-color-alt: hsl(var(--hue), var(--sat), 36%);
+  --title-color: hsl(var(--hue), 12%, 15%);
+  --text-color: hsl(var(--hue), 8%, 35%);
+  --body-color: hsl(var(--hue), 100%, 99%);
+  --container-color: #FFF;
+
+  /*========== Font and typography ==========*/
+  --body-font: 'Open Sans', sans-serif;
+  --h1-font-size: 1.5rem;
+  --normal-font-size: .938rem;
+  --tiny-font-size: .625rem;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+@media screen and (min-width: 968px) {
+  :root {
+    --h1-font-size: 2.25rem;
+    --normal-font-size: 1rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: var(--header-height) 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.section {
+  padding: 4.5rem 0 2rem;
+}
+
+.section__title {
+  font-size: var(--h1-font-size);
+  color: var(--title-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.section__height {
+  height: 100vh;
+}
+
+.contact{
+  height: 3px;
+}
+
+/*=============== LAYOUT ===============*/
+.container {
+  max-width: 968px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+/*=============== HEADER ===============*/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--container-color);
+  z-index: var(--z-fixed);
+  transition: .4s;
+  z-index: 5;
+}
+
+/*=============== NAV ===============*/
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+}
+
+.nav__img {
+  width: 32px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.nav__logo {
+  color: var(--title-color);
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .nav__menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: var(--container-color);
+    box-shadow: 0 -1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);
+    width: 100%;
+    height: 4rem;
+    padding: 0 1rem;
+    display: grid;
+    align-content: center;
+    border-radius: 1.25rem 1.25rem 0 0;
+    transition: .4s;
+    z-index: 5;
+  }
+}
+
+.nav__list, 
+.nav__link {
+  display: flex;
+}
+
+.nav__link {
+  flex-direction: column;
+  align-items: center;
+  row-gap: 4px;
+  color: var(--title-color);
+  font-weight: 600;
+}
+
+.nav__list {
+  justify-content: space-around;
+}
+
+.nav__name {
+  font-size: var(--tiny-font-size);
+  /* display: none;*/ /* Minimalist design, hidden labels */
+}
+
+.nav__icon {
+  font-size: 1.5rem;
+}
+
+/*Active link*/
+.active-link {
+  position: relative;
+  color: var(--first-color);
+  transition: .3s;
+}
+
+/* Minimalist design, active link */
+/* .active-link::before{
+  content: '';
+  position: absolute;
+  bottom: -.5rem;
+  width: 4px;
+  height: 4px;
+  background-color: var(--first-color);
+  border-radius: 50%;
+} */
+
+/* Change background header */
+.scroll-header {
+  box-shadow: 0 1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);
+  z-index: 5;
+}
+
+/*=============== MEDIA QUERIES ===============*/
+/* For small devices */
+/* Remove if you choose, the minimalist design */
+@media screen and (max-width: 320px) {
+  .nav__name {
+    display: none;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 576px) {
+  .nav__list {
+    justify-content: center;
+    column-gap: 3rem;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  body {
+    margin: 0;
+  }
+  .section {
+    padding: 7rem 0 2rem;
+  }
+  .nav {
+    height: calc(var(--header-height) + 1.5rem); /* 4.5rem */
+    z-index: 5;
+  }
+  .nav__img {
+    display: none;
+  }
+  .nav__icon {
+    display: none;
+  }
+  .nav__name {
+    font-size: var(--normal-font-size);
+    /* display: block; */ /* Minimalist design, visible labels */
+  }
+  .nav__link:hover {
+    color: var(--first-color);
+  }
+
+  /* First design, remove if you choose the minimalist design */
+  .active-link::before {
+    content: '';
+    position: absolute;
+    bottom: -.75rem;
+    width: 4px;
+    height: 4px;
+    background-color: var(--first-color);
+    border-radius: 50%;
+  }
+
+  /* Minimalist design */
+  /* .active-link::before{
+      bottom: -.75rem;
+  } */
+}
+
+/* For large devices */
+@media screen and (min-width: 1024px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 20px 1fr 20px;
+}
+.app > * {
+  grid-column: 2 / -2;
+}
+.app > .full {
+  grid-column: 1 / -1;
+}
+.hs {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(6, calc(50% - 40px));
+  grid-template-rows: minmax(150px, 1fr);
+  padding: 0 20px;
+}
+
+
+
+
+
+
+.flex{
+  margin: 20px;
+}
+
+.row{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card-01{
+  background: #03D29F;
+  position: relative;
+  flex: 1;
+  max-width: 300px;
+  height: 150px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  
+}
+.card-01-h2{
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  overflow-wrap: break-word;
+  position: relative;
+  padding-top: 20px;
+}
+.card-01-p{
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+}
+.card-01-img{
+  
+  border-radius: 5px;
+  position: relative;
+  
+
+}
+/* start of skills */
+.fill-purple
+{
+  background-image: linear-gradient(90deg, #4addff, #a34dfe);
+}
+
+.fill-green
+{
+  background-image: linear-gradient(90deg, #ffe40c, #33d497);
+}
+
+.fill-blue
+{
+  background-image: linear-gradient(90deg, #285ca5, #18d5ff);
+}
+
+.fill-orange
+{
+  background-image: linear-gradient(90deg, #fcf595, #ff954d);
+}
+
+.cards
+{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  position: relative;
+  height:21.875rem;
+  width:100%;
+  z-index: 0;
+}
+
+.card
+{
+  display:flex;
+  width:27.8125rem;
+  height:16.25rem;
+  border-radius:0.5rem;
+  transform-origin:center center;
+  transform:scale(1) translate(0px,0px) perspective( 750px ) rotateY(0deg);
+  transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  transition-duration: 0.5s;
+  position:absolute;
+  top:0;
+  box-shadow:0 30px 50px rgba(0,0,0,0.1);
+  z-index:3;
+  cursor: pointer;
+  overflow:hidden;
+}
+
+.card *
+{
+  pointer-events: none;
+}
+
+.card--left
+{
+  transform:scale(0.75) translate(-335px,0px) perspective( 750px ) rotateY(10deg);
+  box-shadow:0 15px 25px rgba(0,0,0,0.1);
+  z-index:1;
+}
+
+.card--center
+{
+  transform:scale(1) translate(0px, 0px) perspective( 750px ) rotateY(0deg);
+  box-shadow:0 30px 50px rgba(0,0,0,0.1);
+  z-index:3;
+}
+
+.card--right
+{
+  transform:scale(0.75) translate(335px,0px) perspective( 750px ) rotateY(-10deg);
+  box-shadow:0 15px 25px rgba(0,0,0,0.1);
+  z-index:1;
+}
+
+.card__icon
+{
+  width:30%;
+  height:100%;
+  background:rgba(255,255,255,0.5);
+  position:relative;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__icon:before
+{
+  content:attr(data-icon);
+  font-size:3rem;
+  position:absolute;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width:100px;
+  height:100px;
+  border-radius: 50px;
+  background:rgba(255,255,255,1);
+}
+
+.card__detail
+{
+  flex:1;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width : 736px)
+{
+  .cards
+  {
+    flex-direction:column;
+    margin:auto 0;
+  }
+
+  .card
+  {
+    display:flex;
+    width:90%;
+    top: 20vh;
+  }
+
+  .card--left
+  {
+    transform:scale(0.75) translate(0px, -150px) perspective(750px) rotateY(0) rotateX(-10deg) translateZ(-5px);
+  }
+
+  .card--center
+  {
+    transform:scale(1) translate(0px, 0px) perspective( 750px ) rotateY(0deg)  rotateX(0deg) translateZ(5px);
+  }
+
+  .card--right
+  {
+    transform:scale(0.75) translate(0px, 150px) perspective(750px) rotateY(0) rotateX(10deg) translateZ(-5px);
+  }
+
+  .card__icon:before
+  {
+    transform:scale(0.75);
+  }
+}
+/* end of skills */
+
+
+/*
+.card-02{
+  background: #50A7FF;
+  position: relative;
+  flex: 1;
+  max-width: 460px;
+  height: 200px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-03{
+  background: #FF7675;
+  position: relative;
+  flex: 1;
+  max-width: 940px;
+  height: 300px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+*/
+
+/* this is whn the screen is bigger than 800px, the min height is 45vh and comment is ctrl k , then ctrl u */
+@media (min-width: 800px) {
+  .card-01{
+    min-height: 45vh;
+  }
+}
+
+
+@media (max-width:800px){
+  .card-01{
+    flex: 100%;
+    max-width: 600px;
+    min-height: 25vh;
+  }
+
+  .card-02{
+    flex: 100%;
+    max-width: 600px;
+  }
+
+  .card-03{
+    flex: 100%;
+    max-width: 600px;
+  }
+}
+
